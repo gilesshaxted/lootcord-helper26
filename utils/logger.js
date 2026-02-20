@@ -1,19 +1,14 @@
-const chalk = require('chalk'); // Optional: run `npm install chalk@4` for colors, or remove chalk wrappers if you don't want it.
-
-const getTimestamp = () => {
-    return new Date().toISOString().replace('T', ' ').substring(0, 19);
+const colors = {
+    info: '\x1b[36m%s\x1b[0m', // Cyan
+    warn: '\x1b[33m%s\x1b[0m', // Yellow
+    error: '\x1b[31m%s\x1b[0m' // Red
 };
 
-const logger = {
-    info: (message) => console.log(`[${getTimestamp()}] [INFO] ${message}`),
-    success: (message) => console.log(`[${getTimestamp()}] [SUCCESS] ${message}`),
-    warn: (message) => console.warn(`[${getTimestamp()}] [WARN] ${message}`),
-    error: (message, error = '') => console.error(`[${getTimestamp()}] [ERROR] ${message}`, error),
-    debug: (message) => {
-        if (process.env.DEBUG === 'true') {
-            console.log(`[${getTimestamp()}] [DEBUG] ${message}`);
-        }
+module.exports = {
+    info: (msg) => console.log(colors.info, `[INFO] ${new Date().toLocaleTimeString()}: ${msg}`),
+    warn: (msg) => console.warn(colors.warn, `[WARN] ${new Date().toLocaleTimeString()}: ${msg}`),
+    error: (msg, error) => {
+        console.error(colors.error, `[ERROR] ${new Date().toLocaleTimeString()}: ${msg}`);
+        if (error) console.error(error);
     }
 };
-
-module.exports = logger;
