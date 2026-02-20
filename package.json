@@ -1,0 +1,19 @@
+{
+  "name": "lootcord-helper-v2",
+  "version": "2.0.0",
+  "description": "Refactored Discord Bot",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js"
+  },
+  "dependencies": {
+    "@discordjs/rest": "^2.2.0",
+    "chalk": "^4.1.2",
+    "discord-api-types": "^0.37.67",
+    "discord.js": "^14.14.1",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "firebase": "^10.7.1"
+  }
+}
