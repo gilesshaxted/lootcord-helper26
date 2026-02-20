@@ -5,8 +5,8 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('say')
         .setDescription('Make the bot say a message in a specific channel.')
-        // Require ManageMessages permission to even see/use this command
-        .setDefaultMemberPermissions(PermissionFlagsBits.ManageMessages)
+        // Require Administrator permission to even see/use this command
+        .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
         .addStringOption(option =>
             option.setName('message')
                 .setDescription('The message you want the bot to say')
