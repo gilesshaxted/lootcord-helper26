@@ -1,10 +1,12 @@
-const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder, PermissionFlagsBits } = require('discord.js');
 const logger = require('../utils/logger');
 
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('ping')
-        .setDescription('Replies with the bot\'s current latency and status.'),
+        .setDescription('Replies with the bot\'s current latency and status.')
+        // Require Administrator permission to even see/use this command
+        .setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
         
     async execute(interaction) {
         // Record the time before sending the initial reply
