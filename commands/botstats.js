@@ -1,11 +1,13 @@
-const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder, PermissionFlagsBits } = require('discord.js');
 const statsTracker = require('../utils/statsTracker');
 const logger = require('../utils/logger');
 
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('bot-stats')
-        .setDescription('Displays current statistics for the bot.'),
+        .setDescription('Displays current statistics for the bot.')
+        // Require Administrator permission to even see/use this command
+        .setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
         
     async execute(interaction, db, client, isFirestoreReady) {
         if (!isFirestoreReady) {
